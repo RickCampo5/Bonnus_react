@@ -25,7 +25,7 @@ export const NavBar = () => {
           <Link className="link" to="/my_profile">My profile</Link>
         </li>
         <li>
-          <Link className="link" to="/logout">Logout</Link>
+          <Link className="link" to="/login">Login</Link>
         </li>
       </ul>
     </nav>
