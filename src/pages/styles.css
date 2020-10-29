@@ -1,0 +1,30 @@
+.main-cont {
+  overflow: hidden;
+}
+
+.cont {
+  padding-top: 70px;
+}
+
+.title {
+  color: #011F4B;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 1.9em;
+}
+
+.desc {
+  color: #011F4B;
+  margin-bottom: 10%;
+}
+
+.cinemaSVG {
+  width: 40%;
+  margin-top: 15%;
+}
+
+.background {
+  position: absolute;
+  bottom: -3%;
+  left: -10%;
+}

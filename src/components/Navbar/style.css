@@ -1,0 +1,37 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #0458D6;
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  height: 43px;
+}
+
+.nav .logo img {
+  width: 40px;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  width: 80%;
+}
+
+.nav ul li {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+.nav ul li .link {
+  color: #F7F9FD;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
