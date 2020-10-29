@@ -7,5 +7,9 @@ export function moviesReducer (state, action) {
     case 'SET_MOVIES': {
       return {...state, movies: action.payload}
     }
+
+    default: {
+      return state
+    }
   }
 }
