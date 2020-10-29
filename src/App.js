@@ -1,5 +1,5 @@
 import './App.css';
-import reducer from './reducers/moviesReducer'
+import { moviesReducer } from './reducers/moviesReducer'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -12,7 +12,7 @@ const initialState = {
   favoriteMovies: []
 }
 
-const store = createStore(reducer, initialState)
+const store = createStore(moviesReducer, initialState)
 
 function App() {
   return (

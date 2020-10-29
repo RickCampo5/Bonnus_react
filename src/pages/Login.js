@@ -21,10 +21,10 @@ export const Login = () => {
             callback={responseFacebook}
           />
         </div>
-        <img className="cinemaSVG" src='/img/cinema.svg'/>
+        <img className="cinemaSVG" src='/img/cinema.svg' alt="cinema SVG"/>
       </Grid>
       <div className="background">
-        <img src="/img/back.svg"/>
+        <img src="/img/back.svg" alt="bubble background"/>
       </div>
     </Container>
   )
