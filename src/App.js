@@ -1,8 +1,8 @@
 import './App.css';
 import { moviesReducer } from './reducers/moviesReducer'
-import { Provider, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { NavBar } from './components/Navbar/index';
 import { PrivateRoute } from './components/PrivateRoute';

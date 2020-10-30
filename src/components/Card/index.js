@@ -1,2 +1,9 @@
 import React from 'react'
-import { NavBar } from '../Navbar/index';
+
+export const Card = () => {
+  return (
+    <div>
+      CArd
+    </div>
+  )
+}
