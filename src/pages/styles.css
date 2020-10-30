@@ -1,7 +1,3 @@
-.main-cont {
-  overflow: hidden;
-}
-
 .cont {
   padding-top: 70px;
 }
@@ -9,13 +5,15 @@
 .title {
   color: #011F4B;
   font-family: 'Montserrat';
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.9em;
 }
 
 .desc {
   color: #011F4B;
   margin-bottom: 10%;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .cinemaSVG {
@@ -27,4 +25,19 @@
   position: absolute;
   bottom: -3%;
   left: -10%;
+  z-index: 0;
+}
+
+.facebookButton {
+  position: relative;
+  z-index: 2;
+  padding: 2% 3%;
+  /* background-color: #2379FA; */
+  background-color: #07D3E3;
+  color: #011F4B;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
 }
