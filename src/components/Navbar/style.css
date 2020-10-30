@@ -35,3 +35,9 @@
   font-size: 0.9em;
 }
 
+button.link {
+  border: none;
+  background-color: transparent;
+  color: #F7F9FD;
+  cursor: pointer;
+}
