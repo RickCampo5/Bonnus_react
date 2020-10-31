@@ -9,7 +9,6 @@ import { PrivateRoute } from './components/PrivateRoute';
 
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
-import { NowPlaying } from './pages/NowPlaying';
 import { Popular } from './pages/Popular';
 import { TopRated } from './pages/TopRated';
 import { Upcoming } from './pages/Upcoming';
@@ -18,7 +17,7 @@ import { UserProfile } from './pages/UserProfile';
 
 const initialState = {
   user: false,
-  movies: [],
+  nowPlaying: [],
   favoriteMovies: []
 }
 
@@ -30,9 +29,8 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/now_playing" component={NowPlaying} />
           <PrivateRoute exact path="/popular" component={Popular} />
           <PrivateRoute exact path="/top_rated" component={TopRated} />
           <PrivateRoute exact path="/upcoming" component={Upcoming} />

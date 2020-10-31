@@ -23,9 +23,6 @@ export const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link className="link" to="/now_playing">Now Playing</Link>
-        </li>
-        <li>
           <Link className="link" to="/popular">Popular</Link>
         </li>
         <li>

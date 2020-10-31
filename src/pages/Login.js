@@ -20,7 +20,7 @@ export const Login = () => {
     })
   }
 
-  if(isAuth) return (<Redirect to="/now_playing" />)
+  if(isAuth) return (<Redirect to="/" />)
 
   return (
     <Container>

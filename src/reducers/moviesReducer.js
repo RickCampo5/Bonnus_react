@@ -4,8 +4,8 @@ export function moviesReducer (state, action) {
       return {...state, favoriteMovies: action.payload}
     }
 
-    case 'SET_MOVIES': {
-      return {...state, movies: action.payload}
+    case 'SET_NOW_PLAYING': {
+      return {...state, nowPlaying: action.payload}
     }
 
     case 'SET_USER_AUTHENTICATION': {
