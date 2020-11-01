@@ -2,30 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Container } from '@material-ui/core'
 import MovieCard from '../components/MovieCard'
-
-const setFavorites = (movies) => {
-  const favorites = JSON.parse(localStorage.getItem('favorites'))
-  const counter = {}
-  const counter2 = {}
-
-  if(favorites) {
-    favorites.forEach(favorite => {
-      counter[favorite.id] = (counter[favorite.id] || 0) + 1
-    })
-  
-    movies.forEach((movie, index) => {
-      counter2[movie.id] = index
-    })
-  
-    for(let key in counter) {
-      if(counter2[key]) {
-        movies[counter2[key]].liked = true
-      } 
-    }
-  }
-
-  return { movies, favorites }
-}
+import setFavorites from '../helpers/setFavorites'
 
 export const Home = () => {
   const movies = useSelector(state => state.nowPlaying)
@@ -58,12 +35,14 @@ export const Home = () => {
 
   return (
     <Container className="movie_container">
+      <h2 className="main-title">Now Playing</h2>
       <Grid container spacing={2} >
         {
           movies.map(({id, title, vote_average, poster_path, release_date, liked}, index) => {
             return (
               <Grid key={id} item xs={6} sm={3} > 
                 <MovieCard
+                  update='UPDATE_MOVIES'
                   liked={liked}
                   index={index}
                   id={id}

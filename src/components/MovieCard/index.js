@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, liked}) => {
+const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, liked, update}) => {
   const classes = useStyles(); 
   const dispatch =  useDispatch()
 
   const handleClick = () => {
     dispatch({
-      type: 'UPDATE_MOVIES',
+      type: update,
       payload: true,
       index: index
     })

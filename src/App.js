@@ -18,7 +18,10 @@ import { UserProfile } from './pages/UserProfile';
 const initialState = {
   user: false,
   nowPlaying: [],
-  favoriteMovies: []
+  favoriteMovies: [],
+  popular: [],
+  upcoming: [],
+  topRated: []
 }
 
 const store = createStore(moviesReducer, initialState)
