@@ -6,6 +6,10 @@ export function moviesReducer (state, action) {
       return { ...state, favoriteMovies: [...state.favoriteMovies, action.payload]}
     }
 
+    case 'REMOVE_FAVORITES': {
+      return update(state, { favoriteMovies: { $splice: [[action.payload, 1]] } })
+    }
+
     case 'UPDATE_MOVIES': {
       return update(state, { nowPlaying: { [action.index]: { liked: { $set: action.payload }}}})
     }

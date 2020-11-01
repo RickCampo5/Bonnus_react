@@ -36,6 +36,11 @@
   font-size: 0.9em;
 }
 
+.nav ul li .link.active {
+  color: #07D3E3;
+  font-weight: 700;
+}
+
 button.link {
   border: none;
   background-color: transparent;

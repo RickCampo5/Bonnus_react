@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
     backgroundColor: '#DBE2EB',
     color: '#011F4B',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    animation: 'slide 1.2s forwards'
   },
   image: {
     paddingTop: '120%'
@@ -53,9 +54,33 @@ const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, 
       payload: movie
     })
 
-    const favorites = JSON.parse(localStorage.getItem('favorites'))
+    let favorites = JSON.parse(localStorage.getItem('favorites'))
+    if(!favorites) favorites = []
     favorites.push(movie)
     localStorage.setItem('favorites', JSON.stringify(favorites))
+  }
+
+  const removeLike = () => {
+    dispatch({
+      type: update,
+      payload: false,
+      index: index
+    })
+
+    let favoriteIndex = ''
+    const favorites = JSON.parse(localStorage.getItem('favorites'))
+    const updatedFav = favorites.filter((favorite, index) => {
+      if(favorite.id !== id) {
+        favoriteIndex = index
+        return favorite
+      }
+    })
+    localStorage.setItem('favorites', JSON.stringify(updatedFav))
+
+    dispatch({
+      type: 'REMOVE_FAVORITES',
+      payload: favoriteIndex
+    })
   }
 
   return (
@@ -76,7 +101,7 @@ const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, 
       </CardActionArea>
       <CardActions>
         {
-          liked ? <IconButton aria-label="favorite button"><Favorite  /></IconButton>
+          liked ? <IconButton onClick={removeLike} aria-label="favorite button"><Favorite  /></IconButton>
           : <IconButton onClick={handleClick} aria-label="favorite button"><FavoriteBorder  /></IconButton>
         }
       </CardActions>

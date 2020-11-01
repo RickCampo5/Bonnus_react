@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 
 export const NavBar = () => {
@@ -23,20 +23,20 @@ export const NavBar = () => {
       </Link>
       <ul>
         <li>
-          <Link className="link" to="/popular">Popular</Link>
+          <NavLink activeClassName="active" className="link" to="/popular">Popular</NavLink>
         </li>
         <li>
-          <Link className="link" to="/top_rated">Top Rated</Link>
+          <NavLink activeClassName="active" className="link" to="/top_rated">Top Rated</NavLink>
         </li>
         <li>
-          <Link className="link" to="/upcoming">Upcoming</Link>
+          <NavLink activeClassName="active" className="link" to="/upcoming">Upcoming</NavLink>
         </li>
         <li>
-          <Link className="link" to="/user_profile">My profile</Link>
+          <NavLink  activeClassName="active" className="link" to="/user_profile">My profile</NavLink>
         </li>
         <li>
           {
-            isAuth ? <button className="link" onClick={logout}>Logout</button> : <Link className="link" to="/login" >Login</Link>
+            isAuth ? <button className="link" onClick={logout}>Logout</button> : <NavLink className="link" to="/login" >Login</NavLink>
           }
         </li>
       </ul>
