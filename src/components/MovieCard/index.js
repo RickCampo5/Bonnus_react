@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
+import Favorite from '@material-ui/icons/Favorite'
+import { useDispatch } from 'react-redux';
 import { 
   makeStyles,
   Card, 
@@ -12,6 +14,7 @@ import {
   CardActionArea
 } from '@material-ui/core'
 
+const DEFAULT_IMAGE = 'img/default-image.jpg'
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -32,30 +35,53 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export const MovieCard = ({ id, title, vote_average, poster_path }) => {
-  const classes = useStyles();
+const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, liked}) => {
+  const classes = useStyles(); 
+  const dispatch =  useDispatch()
+
+  const handleClick = () => {
+    dispatch({
+      type: 'UPDATE_MOVIES',
+      payload: true,
+      index: index
+    })
+
+    const movie = {id, title, vote_average, poster_path, release_date, index, liked}
+
+    dispatch({
+      type: 'ADD_FAVORITES',
+      payload: movie
+    })
+
+    const favorites = JSON.parse(localStorage.getItem('favorites'))
+    favorites.push(movie)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <Link to="/movie_detail/12654" className={classes.link}>
+        <Link to={`/movie_detail/${id}`} className={classes.link}>
           <CardMedia 
             className={classes.image}
-            image='https://image.tmdb.org/t/p/w342/ugZW8ocsrfgI95pnQ7wrmKDxIe.jpg'
-            title='movie poster'
+	          image={ poster_path ? `https://image.tmdb.org/t/p/w342/${poster_path}` : DEFAULT_IMAGE }
+            title={`${title} poster`}
           />
           <CardHeader 
-            avatar={<Avatar className={classes.avatar} aria-label="rating">5.5</Avatar>}
-            title='DieHard'
-            subheader='12/10/20'
+	          avatar={<Avatar className={classes.avatar} aria-label="rating">{vote_average}</Avatar>}
+            title={title}
+            subheader={release_date}
           />
         </Link>
       </CardActionArea>
       <CardActions>
-        <IconButton aria-label="favorite button">
-          <FavoriteBorder />
-        </IconButton>
+        {
+          liked ? <IconButton aria-label="favorite button"><Favorite  /></IconButton>
+          : <IconButton onClick={handleClick} aria-label="favorite button"><FavoriteBorder  /></IconButton>
+        }
       </CardActions>
     </Card>
   )
 }
+
+export default MovieCard
