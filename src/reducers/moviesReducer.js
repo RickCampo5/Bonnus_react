@@ -42,6 +42,10 @@ export function moviesReducer (state, action) {
       return {...state, upcoming: action.payload}
     }
 
+    case 'SET_MOVIE': {
+      return {...state, movie: action.payload}
+    }
+
     case 'SET_USER_AUTHENTICATION': {
       return {...state, user: action.payload}
     }

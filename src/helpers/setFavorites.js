@@ -11,9 +11,6 @@ export default function setFavorites (movies) {
     movies.forEach((movie, index) => {
       counter2[movie.id] = index
     })
-
-    console.log(counter)
-    console.log(counter2)
   
     for(let key in counter) {
       if(counter2[key]+1) {

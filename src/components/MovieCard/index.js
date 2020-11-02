@@ -70,10 +70,8 @@ const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, 
     let favoriteIndex = ''
     const favorites = JSON.parse(localStorage.getItem('favorites'))
     const updatedFav = favorites.filter((favorite, index) => {
-      if(favorite.id !== id) {
-        favoriteIndex = index
-        return favorite
-      }
+      if(favorite.id === id) favoriteIndex = index
+      if(favorite.id !== id) return favorite
     })
     localStorage.setItem('favorites', JSON.stringify(updatedFav))
 
