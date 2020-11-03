@@ -22,7 +22,8 @@ const initialState = {
   popular: [],
   upcoming: [],
   topRated: [],
-  movie: {}
+  movie: {},
+  video: {}
 }
 
 const store = createStore(moviesReducer, initialState)

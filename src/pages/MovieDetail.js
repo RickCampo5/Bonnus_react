@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { Container, Grid, Avatar, makeStyles } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
+import { VideoPlayer } from '../components/VideoPlayer/index';
+const queryString = require('query-string');
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -35,30 +37,48 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: '2.3em'
+  },
+  videoCont: {
+    paddingBottom: '5%'
+  },
+  videoItem: {
+    width: '80%'
   }
 }))
 
 export const MovieDetail = (props) => {
   const classes = useStyles(); 
   const movie = useSelector(state => state.movie)
+  const video = useSelector(state => state.video)
   const dispatch = useDispatch()
-  console.log(movie)
+  console.log(video.key)
   
   useEffect(() => {
     const id = props.match.params.id
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIES_API}&language=en-US&page=1`
+    const videoURL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_MOVIES_API}&language=en-US&page=1&append_to_response=videos`
 
     fetch(url)
       .then(res => {
         return res.json()
       })
       .then(data =>{
-        console.log(data.title)
         dispatch({
           type: 'SET_MOVIE',
           payload: data
         })
       })
+
+      fetch(videoURL)
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          dispatch({
+            type: 'SET_VIDEO',
+            payload: data.results[0]
+          })
+        })
   }, [dispatch])
 
   return (
@@ -69,7 +89,7 @@ export const MovieDetail = (props) => {
       >
         <Container className={classes.bannerGrid}>
           <Grid container spacing={3}>
-            <Grid item>
+            <Grid item xs={4}>
               <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={`${movie.title} poster`}/>
               <h2 className={classes.title}>
                 {movie.title}
@@ -81,15 +101,20 @@ export const MovieDetail = (props) => {
               <ul>
                 <li>Release Date: {movie.release_date}</li>
                 <li>Runtime: {movie.runtime}</li>
-                <li>Generes: { movie && movie.genres.map(genre => (<span key={genre.id}> {genre.name} </span>)) }</li>
+                <li>Generes: { movie.genres && movie.genres.map(genre => (<span key={genre.id}> {genre.name} </span>)) }</li>
               </ul>
             </Grid>
           </Grid>
         </Container>
         <div className={classes.overlay}></div>
       </div>
-      <Container>
-        
+      <Container className={classes.videoCont}>
+        <h3 className={classes.title}>Movie trailer</h3>
+        <Grid container justify="center">
+          <Grid item className={classes.videoItem}>
+            <VideoPlayer id={video.key} />
+          </Grid>
+        </Grid>
       </Container>
     </React.Fragment>
   )
