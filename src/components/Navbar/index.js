@@ -10,9 +10,10 @@ export const NavBar = () => {
   })
 
   const logout = () => {
+    localStorage.removeItem('user')
     dispatch({
       type: 'SET_USER_AUTHENTICATION',
-      payload: false
+      payload: {}
     })
   }
 
@@ -36,7 +37,7 @@ export const NavBar = () => {
         </li>
         <li>
           {
-            isAuth ? <button className="link" onClick={logout}>Logout</button> : <NavLink className="link" to="/login" >Login</NavLink>
+            isAuth.id ? <button className="link" onClick={logout}>Logout</button> : <NavLink className="link" to="/login" >Login</NavLink>
           }
         </li>
       </ul>

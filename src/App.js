@@ -16,7 +16,7 @@ import { MovieDetail } from './pages/MovieDetail';
 import { UserProfile } from './pages/UserProfile';
 
 const initialState = {
-  user: false,
+  user: {},
   nowPlaying: [],
   favoriteMovies: [],
   popular: [],
