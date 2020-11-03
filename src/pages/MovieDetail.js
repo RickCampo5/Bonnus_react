@@ -51,7 +51,6 @@ export const MovieDetail = (props) => {
   const movie = useSelector(state => state.movie)
   const video = useSelector(state => state.video)
   const dispatch = useDispatch()
-  console.log(video.key)
   
   useEffect(() => {
     const id = props.match.params.id

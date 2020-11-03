@@ -47,7 +47,7 @@ const MovieCard = ({ id, title, vote_average, poster_path, release_date, index, 
       index: index
     })
 
-    const movie = {id, title, vote_average, poster_path, release_date, index, liked}
+    const movie = {id, title, vote_average, poster_path, release_date, index, liked: true, update}
 
     dispatch({
       type: 'ADD_FAVORITES',

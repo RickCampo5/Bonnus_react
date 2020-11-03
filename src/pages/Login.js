@@ -37,7 +37,7 @@ export const Login = () => {
           <p className="desc">Here you can look for the movies you want to see and get a description, rating, <br/>watch the trailer and more. Please log in with Facebook to continue</p>
           {/* <button className="facebookButton" onClick={responseFacebook}>Login</button> */}
           <FacebookLogin 
-            appId="1396011717456903"
+            appId={process.env.REACT_APP_FACEBOOK_API}
             fields="name,email,picture"
             callback={responseFacebook}
             cssClass="facebookButton"

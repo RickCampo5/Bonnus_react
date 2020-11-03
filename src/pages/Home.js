@@ -23,10 +23,12 @@ export const Home = () => {
           payload: movies
         })
 
-        dispatch({
-          type: 'ADD_FAVORITES',
-          payload: favorites
-        })
+        if(favorites) {
+          dispatch({
+            type: 'ADD_FAVORITES',
+            payload: favorites
+          })
+        }
       })
       .catch(err => {
         console.log('There was an error:', err) 

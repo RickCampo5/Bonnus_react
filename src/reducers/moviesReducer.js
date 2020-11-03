@@ -3,7 +3,7 @@ import update from 'immutability-helper'
 export function moviesReducer (state, action) {
   switch(action.type) {
     case 'ADD_FAVORITES': {
-      return { ...state, favoriteMovies: [...state.favoriteMovies, action.payload]}
+      return update(state, { favoriteMovies: { $push: [action.payload] } })
     }
 
     case 'REMOVE_FAVORITES': {
